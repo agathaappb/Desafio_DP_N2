@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.agathaappb.desafio_dp_n2.R
 import com.agathaappb.desafio_dp_n2.ServiceApiNoticias.GetArticles
 import com.agathaappb.desafio_dp_n2.ServiceApiNoticias.GetModel
+import com.squareup.picasso.Picasso
 
 class NoticiasAdapter(private val getModel: List<GetArticles>): RecyclerView.Adapter<NoticiasAdapter.NoticiasViewHolder>(){
     inner class NoticiasViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -27,6 +28,9 @@ class NoticiasAdapter(private val getModel: List<GetArticles>): RecyclerView.Ada
         val itemPosition = getModel.get(position)
             holder.noticiaTextView.text = itemPosition.description
             holder.autorTextView.text = itemPosition.author
+            val urlImage = itemPosition.urlToImage
+            Picasso.get().load(urlImage).into(holder.imagemView)
+
     }
 
     override fun getItemCount(): Int {

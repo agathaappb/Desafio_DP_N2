@@ -22,6 +22,30 @@ class MenuNoticias : AppCompatActivity() {
 
         btn_tecnologia.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("q", "tecnologia").toString()
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
+        btn_mobile.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("q", "desenvolvimento mobile").toString()
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
+        btn_games.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("q", "jogos").toString()
+            intent.putExtras(bundle)
+            startActivity(intent)
+        }
+        btn_saude.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("q", "saude").toString()
+            intent.putExtras(bundle)
             startActivity(intent)
         }
 

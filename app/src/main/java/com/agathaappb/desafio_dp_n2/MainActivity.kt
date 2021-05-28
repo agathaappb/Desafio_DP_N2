@@ -33,9 +33,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,R.layout.activity_menu_noticias::class.java)
             startActivity(intent)
         }
+
+        val bundle = intent.extras
+        val q = bundle?.getString("q").toString()
         val service = NewsAPIClient.createService(GetService::class.java)
         val liveData = MutableLiveData<GetModel>()
-        val call: Call<GetModel> = service.getNoticia("tecnologia")
+        val call: Call<GetModel> = service.getNoticia("${q}")
 
         call.enqueue(object : Callback<GetModel> {
             override fun onFailure(call: Call<GetModel>, t: Throwable) {

@@ -1,5 +1,7 @@
 package com.agathaappb.desafio_dp_n2
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -26,9 +28,14 @@ class MainActivity : AppCompatActivity() {
         val progress: ProgressBar = findViewById(R.id.progressBar)
         progress.visibility = View.VISIBLE
 
+        val btn_home : Button = findViewById(R.id.btn_home)
+        btn_home.setOnClickListener {
+            val intent = Intent(this,R.layout.activity_menu_noticias::class.java)
+            startActivity(intent)
+        }
         val service = NewsAPIClient.createService(GetService::class.java)
         val liveData = MutableLiveData<GetModel>()
-        val call: Call<GetModel> = service.getNoticia()
+        val call: Call<GetModel> = service.getNoticia("tecnologia")
 
         call.enqueue(object : Callback<GetModel> {
             override fun onFailure(call: Call<GetModel>, t: Throwable) {
@@ -53,11 +60,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-
-
-
     }
 
 
 }
+
 
